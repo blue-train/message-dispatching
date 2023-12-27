@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "displayName": "Message Dispatching",
   "description": "Simple message dispatching system",
-  "unity": "2022.3",
-  "unityRelease": "9f1",
+  "unity": "2019.4",
+  "documentationUrl": "https://github.com/blue-train/message-dispatching/blob/main/README.md",
   "licensesUrl": "https://github.com/blue-train/message-dispatching/blob/main/LICENSE",
   "keywords": [
     "unity",
