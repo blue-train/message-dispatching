@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MessageDispatching
+namespace BlueTrain.MessageDispatching
 {
     public static class MessageDispatcher
     {
