@@ -1,0 +1,19 @@
+{
+  "name": "com.BlueTrain.MessageDispatching",
+  "version": "1.0.0",
+  "displayName": "Message Dispatching",
+  "description": "Simple message dispatching system",
+  "unity": "2022.3",
+  "unityRelease": "9f1",
+  "licensesUrl": "https://github.com/blue-train/message-dispatching/blob/main/LICENSE",
+  "keywords": [
+    "unity",
+    "message",
+    "dispatching"
+  ],
+  "author": {
+    "name": "BlueTrain",
+    "email": "bluetraingames@gmail.com",
+    "url": "https://github.com/blue-train/message-dispatching"
+  }
+}
