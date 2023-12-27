@@ -1,5 +1,5 @@
 {
-  "name": "com.BlueTrain.MessageDispatching",
+  "name": "com.blue-train.message-dispatching",
   "version": "1.0.0",
   "displayName": "Message Dispatching",
   "description": "Simple message dispatching system",
