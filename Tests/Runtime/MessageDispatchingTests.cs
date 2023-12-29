@@ -44,14 +44,17 @@ namespace BlueTrain.MessageDispatching.Tests
 
             MessageDispatcher.Register<IncreasingValueRequestedMessage>(IncreaseValueAFromData);
             MessageDispatcher.Register<IncreasingValueRequestedMessage>(IncreaseValueBFromData);
-            MessageDispatcher.Send<IncreasingValueRequestedMessage>(new IncreasingValueRequestedMessageData { IncreaseValueBy = 10 });
+            MessageDispatcher.Send<IncreasingValueRequestedMessage>(
+                new IncreasingValueRequestedMessageData { IncreaseValueBy = 10 }); // a == 10, b == 10
 
             MessageDispatcher.Unregister<IncreasingValueRequestedMessage>(IncreaseValueAFromData);
-            MessageDispatcher.Send<IncreasingValueRequestedMessage>(new IncreasingValueRequestedMessageData { IncreaseValueBy = 10 });
+            MessageDispatcher.Send<IncreasingValueRequestedMessage>(
+                new IncreasingValueRequestedMessageData { IncreaseValueBy = 10 }); // a == 10, b == 20
 
             MessageDispatcher.Register<IncreasingValueRequestedMessage>(IncreaseValueAFromData);
             MessageDispatcher.Unregister<IncreasingValueRequestedMessage>(IncreaseValueBFromData);
-            MessageDispatcher.Send<IncreasingValueRequestedMessage>(new IncreasingValueRequestedMessageData { IncreaseValueBy = 10 });
+            MessageDispatcher.Send<IncreasingValueRequestedMessage>(
+                new IncreasingValueRequestedMessageData { IncreaseValueBy = 10 }); // a == 20, b == 20
 
             MessageDispatcher.ClearAll();
 
