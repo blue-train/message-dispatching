@@ -1,12 +1,20 @@
-# Simple message dispatching system for Unity Engine
-This is a simple implementation of an [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), where you have subscribers that listen to events.  
+# Provides a simple message dispatching system.
+This is a simple implementation of an [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), where you register actions to listen to events.  
 You can add it as a package to your Unity project using [project URL](https://github.com/blue-train/message-dispatching.git).
 ## How to use
-- Create a custom message and inherit it from MessageBase class: `GameStartedMessage : MessageBase`.
-- Register an action to a message: `MessageDispatcher.Subscribe<GameStartedMessage>(OnGameStarted)`.
-- Send a message to invoke all related actions: `MessageDispatcher.Send<GameStartedMessage>()`.
-- Unregister an action from a message: `MessageDispatcher.Unsubscribe<GameStartedMessage>(OnGameStarted)`.
+- Create a message that implements `IMessage`.  
+`class ValueChangedMessage : IMessage { }`
+- If needed, create a message data that implements `IMessageData`.  
+`class ValueChangedMessageData : IMessageData { }`
+- Create a method that takes `IMessageData` as a parameter.  
+`void OnValueChanged(IMessageData messageData) => var data = (ValueChangedMessageData)messageData;`
+- Register an action to a message.  
+`MessageDispatcher.Register<ValueChangedMessage>(OnValueChanged);`
+- Send a message to invoke all related actions.  
+`MessageDispatcher.Send<ValueChangedMessage>();`
+- Unregister an action from a message.  
+`MessageDispatcher.Unregister<ValueChangedMessage>(OnValueChanged);`
 ## Notes
 - Requires at least Unity 2019.4.
-- Use methods instead of lambdas when calling `Subscribe`/`Unsubscribe`, otherwise, it will not work.
-- Although it was made firstly for Unity, you can use it anywhere because the only part related to the game engine is the tests folder.
+- Use methods or local functions instead of lambdas when calling `Register`/`Unregister`, otherwise, it will not work.
+- Can be used in non-Unity projects. It doesn't depend on any Unity package.
