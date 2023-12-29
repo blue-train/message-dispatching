@@ -5,35 +5,40 @@ namespace BlueTrain.MessageDispatching
 {
     public static class MessageDispatcher
     {
-        private static readonly Dictionary<Type, MessageHandler> MessageHandlers = new Dictionary<Type, MessageHandler>();
+        private static readonly Dictionary<Type, MessageHandler> Handlers = new Dictionary<Type, MessageHandler>();
 
-        public static void Subscribe<TMessage>(MessageHandler handler) where TMessage : MessageBase
+        public static void Register<TMessage>(MessageHandler handler) where TMessage : IMessage
         {
             var type = typeof(TMessage);
 
-            if (MessageHandlers.ContainsKey(type))
+            if (Handlers.ContainsKey(type))
             {
-                MessageHandlers[type] += handler;
+                Handlers[type] += handler;
             }
             else
             {
-                MessageHandlers.Add(type, handler);
+                Handlers.Add(type, handler);
             }
         }
 
-        public static void Unsubscribe<TMessage>(MessageHandler handler) where TMessage : MessageBase
+        public static void Unregister<TMessage>(MessageHandler handler) where TMessage : IMessage
         {
             var type = typeof(TMessage);
 
-            if (MessageHandlers.ContainsKey(type))
+            if (Handlers.ContainsKey(type))
             {
-                MessageHandlers[type] -= handler;
+                Handlers[type] -= handler;
             }
         }
 
-        public static void Send<TMessage>() where TMessage : MessageBase
+        public static void Send<TMessage>(IMessageData messageData = null) where TMessage : IMessage
         {
-            MessageHandlers[typeof(TMessage)]?.Invoke();
+            Handlers[typeof(TMessage)]?.Invoke(messageData);
+        }
+
+        public static void ClearAll()
+        {
+            Handlers.Clear();
         }
     }
 }

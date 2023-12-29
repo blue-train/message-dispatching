@@ -1,4 +1,4 @@
 namespace BlueTrain.MessageDispatching
 {
-    public class MessageBase { }
+    public interface IMessageData { }
 }
