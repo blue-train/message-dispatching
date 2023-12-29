@@ -1,5 +1,6 @@
 # Provides a simple message dispatching system.
-This is a simple implementation of an [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), where you register actions to listen to events.  
+This is a simple implementation of an [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern).  
+You register actions to listen to messages and then send these messages.  
 You can add it as a package to your Unity project using [project URL](https://github.com/blue-train/message-dispatching.git).
 ## How to use
 - Create a message that implements `IMessage`.  
