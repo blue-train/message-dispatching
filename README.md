@@ -4,28 +4,23 @@ You register actions to listen to messages and then send these messages.
   
 You can add it as a package to your Unity project using [project URL](https://github.com/blue-train/message-dispatching.git).
 ## How to use
-- Create a message that implements `IMessage`  
 ```CSharp
+// Create a message that implements `IMessage`
 class ValueChangedMessage : IMessage { }
-```
-- If you need, create a message data that implements `IMessageData`  
-```CSharp
+
+// If you need, create a message data that implements `IMessageData`
 class ValueChangedMessageData : IMessageData { }
-```
-- Create a method that takes `IMessageData` as a parameter  
-```CSharp
+
+// Create a method that takes `IMessageData` as a parameter  
 void OnValueChanged(IMessageData messageData) => var data = (ValueChangedMessageData)messageData;
-```
-- Register an action to a message 
-```CSharp
+
+// Register an action to a message 
 MessageDispatcher.Register<ValueChangedMessage>(OnValueChanged);
-```
-- Send a message to invoke all related actions  
-```CSharp
+
+// Send a message to invoke all related actions  
 MessageDispatcher.Send<ValueChangedMessage>();
-```
-- Unregister an action from a message  
-```CSharp
+
+// Unregister an action from a message  
 MessageDispatcher.Unregister<ValueChangedMessage>(OnValueChanged);
 ```
 ## Notes
